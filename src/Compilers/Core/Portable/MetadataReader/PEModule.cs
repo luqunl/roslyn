@@ -175,7 +175,7 @@ namespace Microsoft.CodeAnalysis
             // PEModule is either created with metadata memory block or a PE reader.
             if (_metadataPointerOpt != IntPtr.Zero)
             {
-                newReader = new MetadataReader((byte*)_metadataPointerOpt, _metadataSizeOpt, MetadataReaderOptions.ApplyWindowsRuntimeProjections, StringTableDecoder.Instance);
+                newReader = new MetadataReader((byte*)_metadataPointerOpt, _metadataSizeOpt, MetadataReaderOptions.None, StringTableDecoder.Instance);
             }
             else
             {
@@ -197,7 +197,7 @@ namespace Microsoft.CodeAnalysis
                     throw new BadImageFormatException(CodeAnalysisResources.PEImageDoesntContainManagedMetadata);
                 }
 
-                newReader = _peReaderOpt.GetMetadataReader(MetadataReaderOptions.ApplyWindowsRuntimeProjections, StringTableDecoder.Instance);
+                newReader = _peReaderOpt.GetMetadataReader(MetadataReaderOptions.None, StringTableDecoder.Instance);
             }
 
             Interlocked.CompareExchange(ref _lazyMetadataReader, newReader, null);

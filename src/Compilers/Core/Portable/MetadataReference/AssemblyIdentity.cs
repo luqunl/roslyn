@@ -292,7 +292,7 @@ namespace Microsoft.CodeAnalysis
         /// </summary>
         public AssemblyContentType ContentType
         {
-            get { return _contentType; }
+            get { return AssemblyContentType.Default; }
         }
 
         /// <summary>
